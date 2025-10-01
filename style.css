@@ -1,0 +1,195 @@
+/* Google Font Link: 'Poppins' for a professional look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* --- 1. Basic Reset and Page Centering --- */
+body {
+    /* Poppins Font ka istemaal */
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f6; /* Bahut Halka Blue-Grey Background */
+    color: #333;
+    /* Poori screen ko center mein karne ke liye */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Mobile par thoda padding */
+}
+
+.main-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px; /* Thode zyada gol kinare */
+    /* Professional shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    max-width: 480px; 
+    width: 95%; 
+    text-align: center;
+    border: 1px solid #e0e0e0; /* Halka border */
+}
+
+/* --- 2. Header and Navigation Styling --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 35px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0; /* Separator line */
+}
+
+/* Wallet Info */
+.wallet-info {
+    font-size: 1.1em;
+    font-weight: 600; /* Semi-bold */
+    color: #27ae60; /* Professional Green */
+}
+
+/* Profile Button */
+.profile-btn {
+    text-decoration: none;
+    background-color: #3498db; 
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3); /* Button shadow */
+}
+
+.profile-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px); /* Halka lift effect */
+    box-shadow: 0 6px 10px rgba(52, 152, 219, 0.4);
+}
+
+.profile-icon {
+    margin-right: 8px;
+    font-size: 1.3em;
+}
+
+/* --- 3. Captcha Box Styling --- */
+.captcha-solving-area {
+    margin: 30px 0;
+}
+
+.captcha-box {
+    padding: 30px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fcfcfc;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow */
+}
+
+.captcha-image {
+    font-size: 3em;
+    font-weight: 700; /* Extra bold */
+    letter-spacing: 6px;
+    background-color: #e74c3c; /* Reddish for high contrast */
+    color: white;
+    padding: 20px 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    user-select: none;
+    display: inline-block;
+    min-width: 85%;
+    transform: rotate(-1deg); /* Thoda stylish tilt */
+}
+
+.earning-info {
+    color: #27ae60;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#captcha-input {
+    width: 90%;
+    padding: 14px;
+    margin-bottom: 25px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#captcha-input:focus {
+    border-color: #3498db;
+    outline: none; /* Focus outline hatana */
+}
+
+#submit-captcha {
+    background-color: #2ecc71; /* Bright Green - Action button */
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.4);
+}
+
+#submit-captcha:hover {
+    background-color: #27ae60;
+    transform: translateY(-1px);
+}
+
+.message-area {
+    margin-top: 20px;
+    min-height: 25px;
+    font-weight: 600;
+}
+
+/* --- 4. Footer Links Styling --- */
+.footer-links {
+    margin-top: 30px;
+    font-size: 0.95em;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+.footer-links a {
+    color: #95a5a6; /* Subtle grey */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: #34495e; /* Darker on hover */
+}
+
+/* --- 5. Responsiveness (Mobile) --- */
+@media (max-width: 480px) {
+    .main-container {
+        padding: 25px 20px;
+    }
+    .top-header {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+    .wallet-info {
+        text-align: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .profile-btn {
+        width: 100%; 
+        justify-content: center;
+    }
+    .captcha-image {
+        font-size: 2.5em;
+        letter-spacing: 4px;
+    }
+    #captcha-input {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+}
