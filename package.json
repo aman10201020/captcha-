@@ -1,10 +1,10 @@
 {
   "name": "captcha-server",
   "version": "1.0.0",
-  "description": "", // <-- Agar yahan galti hai
+  "description": "", 
   "main": "server.js",
   "scripts": {
-    "start": "node server.js", // <-- Yahan comma bahut zaroori hai
+    "start": "node server.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
