@@ -3,7 +3,7 @@ const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567
 let currentCaptcha = '';
 
 // सर्वर का URL (लोकल टेस्टिंग के लिए)
-const API_URL = 'http://localhost:5000'; 
+const API_URL ='https://captcha-7.onrender.com'; 
 const FREE_TRIAL_LIMIT = 50; 
 
 // DOM Elements
@@ -216,4 +216,5 @@ captchaInput.addEventListener('keyup', function(event) {
 });
 
 // पेज लोड होते ही डेटा लोड करें
+
 window.onload = loadUserData;
