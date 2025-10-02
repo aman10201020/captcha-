@@ -1,0 +1,299 @@
+/* Google Font Import (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Global Body & Container Styles --- */
+body {
+    background: #1e1f2b; /* Dark purple background */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 70px; /* Add padding to body to avoid content being hidden by bottom nav */
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* --- Header and Navigation --- */
+.header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.support-btn, .profile-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.support-btn {
+    background: #3c3e53;
+    color: #ffffff;
+}
+.profile-btn {
+    background: #8e2de2; /* Main accent color */
+    color: #ffffff;
+}
+.profile-link, .action-link {
+    text-decoration: none;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #dc3545; /* Red color for log out */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* --- Wallet Card --- */
+.wallet-card {
+    background: #2a2c3d;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.balance-info {
+    display: flex;
+    align-items: center;
+}
+
+.wallet-icon {
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.balance-text .balance-amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f7f7f7;
+}
+
+/* Withdrawal button container when only one button is present */
+.withdraw-only {
+    width: 35%; 
+}
+.full-width-btn {
+    width: 100%;
+}
+
+.action-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    background: #3c3e53;
+    color: #ffffff;
+    transition: background 0.3s;
+}
+
+.action-btn.primary {
+    background: #8e2de2; /* Withdraw button color */
+}
+
+/* --- Captcha Solver Card (Main Content Card) --- */
+.captcha-solver-card {
+    background: #2a2c3d;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.captcha-solver-card h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.trial-text {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.captcha-display-area {
+    background: #1e1f2b;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.captcha-text {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    user-select: none; 
+    color: #8e2de2; 
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+.refresh-btn {
+    background: none;
+    border: none;
+    color: #8e2de2;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.captcha-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #3c3e53;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #1e1f2b;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #8e2de2, #4a00e0); /* Blue-purple gradient */
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.message {
+    margin-top: 15px;
+    font-weight: 600;
+    height: 20px;
+}
+
+/* --- Profile & Withdraw Specific Styles --- */
+.detail-group p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* Withdraw Page Payment Options */
+.input-group { 
+    margin-bottom: 20px; 
+}
+.input-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: 600; 
+    color: #ccc; 
+}
+.payment-option-btn {
+    background: #3c3e53;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+.payment-option-btn.active { 
+    background: #8e2de2; 
+}
+.payment-details { 
+    border: 1px solid #3c3e53; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-top: 15px;
+}
+.payment-details .captcha-input {
+    text-align: left;
+}
+
+/* --- New Bottom Navigation Bar Styles --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #2a2c3d; /* Same as card background */
+    border-top: 1px solid #3c3e53;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 50; /* Ensure it stays on top */
+}
+
+.nav-item {
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.nav-item:hover {
+    background: #3c3e53;
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 3px;
+    display: block; /* Icon on top */
+}
+
+.nav-item span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* --- Mobile Responsiveness (For Phone) --- */
+@media (max-width: 600px) {
+    .wallet-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .withdraw-only {
+        width: 100%; /* Make Withdraw button full width on small screens */
+    }
+    .action-link button {
+        width: 100%;
+    }
+    .payment-option-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}

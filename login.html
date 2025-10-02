@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-card {
+            padding: 40px;
+            text-align: center;
+        }
+        .auth-card h2 {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header" style="justify-content: flex-end; margin-bottom: 40px;">
+            <button class="profile-btn">🔒 User Login</button>
+        </header>
+
+        <main class="captcha-solver-card auth-card">
+            <h2>Welcome Back!</h2>
+            
+            <div class="input-group">
+                <input type="email" id="loginEmail" class="captcha-input" placeholder="Enter Email ID" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="loginPassword" class="captcha-input" placeholder="Password" required>
+            </div>
+            
+            <button id="loginBtn" class="submit-btn" style="margin-top: 20px;">Login</button>
+            
+            <p id="loginMessage" class="message"></p>
+
+            <p style="margin-top: 20px; color: #aaa;">
+                Don't have an account? 
+                <a href="signup.html" style="color: #8e2de2; text-decoration: none; font-weight: 600;">Sign Up Here</a>
+            </p>
+        </main>
+    </div>
+
+    <script>
+        const loginEmailInput = document.getElementById('loginEmail');
+        const loginPasswordInput = document.getElementById('loginPassword');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginMessageEl = document.getElementById('loginMessage');
+        
+        // सर्वर का URL
+       const API_URL = 'https://captcha-7.onrender.com';
+
+        // अगर JWT टोकन है, तो होम पर भेजें
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'index.html';
+        }
+
+        loginBtn.addEventListener('click', async () => {
+            const email = loginEmailInput.value.trim();
+            const password = loginPasswordInput.value.trim();
+
+            if (!email || !password) {
+                loginMessageEl.textContent = 'Please enter both email and password.';
+                loginMessageEl.style.color = 'red';
+                return;
+            }
+
+            loginMessageEl.textContent = 'Logging in...';
+            loginMessageEl.style.color = '#ffc107';
+            loginBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                loginBtn.disabled = false;
+
+                if (response.ok && data.success) {
+                    // सर्वर से JWT टोकन प्राप्त करें और सेव करें
+                    localStorage.setItem('authToken', data.token); 
+                    
+                    loginMessageEl.textContent = 'Login successful! Redirecting...';
+                    loginMessageEl.style.color = 'lightgreen';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    // सर्वर से त्रुटि संदेश
+                    loginMessageEl.textContent = data.message || 'Invalid email or password.';
+                    loginMessageEl.style.color = 'red';
+                }
+
+            } catch (error) {
+                loginBtn.disabled = false;
+                loginMessageEl.textContent = 'Connection Error. Is the server running (port 5000)?';
+                loginMessageEl.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

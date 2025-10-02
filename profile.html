@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header" style="justify-content: center; margin-bottom: 40px;">
+            <button class="profile-btn">👤 User Profile</button>
+        </header>
+
+        <main class="captcha-solver-card" style="padding: 40px; text-align: left;">
+            <h2>👤 User Details</h2>
+            <hr style="border-color: #3c3e53; margin: 15px 0;">
+            
+            <div class="detail-group">
+                <p><strong>Name:</strong> <span id="userName">Loading...</span></p>
+                <p><strong>Mobile:</strong> <span id="userMobile">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+                <p><strong>Subscription Status:</strong> <span id="subscriptionStatus" style="color: red;">Loading...</span></p>
+                <p><strong>Current Reward Rate:</strong> <span id="rewardRate">Loading...</span></p>
+                <p><strong>Total Captchas Solved:</strong> <span id="solvedCount">Loading...</span></p>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Wallet Information</h3>
+            <hr style="border-color: #3c3e53; margin: 15px 0;">
+            <p><strong>Current Balance:</strong> <span id="profileBalance">Loading...</span></p>
+            <p><strong>Free Trial Limit:</strong> ₹50</p>
+            <a href="subscription.html" class="action-link"><button class="submit-btn" style="width: auto; margin-top: 30px;">Buy/Upgrade Subscription</button></a>
+
+            <button class="logout-btn" style="margin-top: 30px;">Log Out</button>
+        </main>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house">🏠</i>
+            <span>Home</span>
+        </a>
+        
+        <a href="history.html" class="nav-item">
+            <i class="fa-solid fa-clock-rotate-left">⏱️</i>
+            <span>History</span>
+        </a>
+
+        <a href="subscription.html" class="nav-item">
+            <i class="fa-solid fa-star">✨</i>
+            <span>Plans</span>
+        </a>
+
+        <a href="profile.html" class="nav-item" style="color: #8e2de2;">
+            <i class="fa-solid fa-user">👤</i>
+            <span>Profile</span>
+        </a>
+
+        <a href="index.html#chatOverlay" class="nav-item">
+            <i class="fa-solid fa-message">💬</i>
+            <span>Support</span>
+        </a>
+    </div>
+
+    <script>
+       const API_URL = 'https://captcha-7.onrender.com';
+
+        // *** AUTH CHECK & DATA LOAD ***
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('authToken');
+            
+            if (!token) {
+                window.location.href = 'login.html'; // अगर टोकन नहीं है
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/user/balance`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // 1. User Details
+                    document.getElementById('userName').textContent = data.name || 'N/A';
+                    document.getElementById('userMobile').textContent = data.mobile || 'N/A';
+                    document.getElementById('userEmail').textContent = data.email || 'N/A';
+                    
+                    // 2. Wallet & Stats
+                    document.getElementById('profileBalance').textContent = '₹' + data.balance;
+                    document.getElementById('solvedCount').textContent = data.captchasSolved || '0';
+                    
+                    // 3. Subscription Status
+                    const isSubscribed = data.isSubscribed;
+                    const rate = data.rewardRate || '5';
+                    
+                    const status = isSubscribed ? 'ACTIVE' : 'FREE TRIAL';
+                    document.getElementById('subscriptionStatus').textContent = status;
+                    document.getElementById('subscriptionStatus').style.color = isSubscribed ? 'lightgreen' : 'red';
+                    
+                    document.getElementById('rewardRate').textContent = '₹' + rate;
+
+                } else {
+                    // टोकन अमान्य
+                    localStorage.removeItem('authToken');
+                    alert("Session expired. Please log in again.");
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error("Error loading profile data:", error);
+                alert("Could not connect to the server.");
+            }
+        });
+
+        // Log Out Button Functionality
+        document.querySelector('.logout-btn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to log out?')) {
+                localStorage.removeItem('authToken'); // JWT टोकन हटाएँ
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
