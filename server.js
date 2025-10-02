@@ -12,7 +12,7 @@ const DB_PASSWORD = 'Sharma1020'; // यूजर द्वारा दिय�
 const MONGO_URI = `mongodb+srv://sharma10:${DB_PASSWORD}@cluster0.y50ttjv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`; 
 
 const JWT_SECRET = 'Rndm!SuperS3cr3tK3y@4CaptchaApp2025_Final'; // <<< यह गुप्त कोड है!
-const PORT = 5000;
+const PORT = 5500;
 const FREE_TRIAL_LIMIT = 50;
 const FRONTEND_URL = 'http://127.0.0.1:5500'; // <<< अगर आपकी वेबसाइट का पोर्ट अलग है, तो इसे बदलें!
 
@@ -206,3 +206,4 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 
 });
+
