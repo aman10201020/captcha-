@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const User = require('./models/User');
+const User = require('./models/user.js');
 
 // --- 1. कॉन्फ़िगरेशन (CONFIGURATION) ---
 const DB_PASSWORD = 'Sharma1020'; // यूजर द्वारा दिया गया पासवर्ड
@@ -204,4 +204,5 @@ app.post('/api/support/message', auth, async (req, res) => {
 // --- 4. सर्वर शुरू करें (START THE SERVER) ---
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+
 });
