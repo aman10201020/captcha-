@@ -1,21 +1,16 @@
 {
-  "dependencies": {
-    "mongodb": "^6.20.0"
-  }
-}
-{
   "name": "captcha-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js", // Ya aapki main file ka naam
+  "description": "", // <-- Agar yahan galti hai
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",  <-- **Yeh line bahut zaroori hai!**
+    "start": "node server.js", // <-- Yahan comma bahut zaroori hai
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    // ... aapki saari dependencies yahan hongi
+    // ... aapki saari dependencies
   }
 }
